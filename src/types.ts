@@ -6,6 +6,10 @@ export type ChangedFile = {
 export type ValidationResult = {
   command: string;
   status: "passed" | "failed";
+  /** Null when the process did not exit on its own (timed out, output limit, could not start). */
+  exitCode: number | null;
+  /** Why the command failed, e.g. "exited with code 3" or "timed out after 300s". */
+  reason?: string;
   output: string;
 };
 
